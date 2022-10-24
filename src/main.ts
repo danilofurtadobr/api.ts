@@ -6,12 +6,12 @@ const pool = mysql.createPool({
     port     : 3306,
     user     : 'root',
     password : '123321',
-    database : 'grimes'
+    database : 'grimes',
 });
 
 const app = express();
 app.get("/boards", async function (req, res) {
-      const boards = await pool.query("select * from grimes.board", []);
-      res.json(boards);
-})
+      const[rows,fields] = await pool.query("select * from grimes.board", []);
+      res.json(rows);
+});
 app.listen(3000);
