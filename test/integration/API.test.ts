@@ -6,5 +6,5 @@ test("Deve retornar os quadros por meio da API", async function () {
         method: "get"
     });
     const boards = response.data;
-    expect(boards).toHaveLength(1);
+    expect(boards).toHaveLength(2);
 });
