@@ -1,13 +1,15 @@
-import Board from "../entity/Board";
+import Board from "../domain/entity/Board";
+import BoardRepository from "../domain/repository/BoardRepository";
 import { Service } from "./Service";
 
-export default class BoardService extends Service {
+export default class BoardService {
+
+    constructor (readonly boardRepository: BoardRepository) {
+
+    }
+
     async getBoards() {
-        const [rows, fields] = await this.db.query("select * from grimes.board", []);
-        const boards: Board[] = [];
-        for (const board of rows) {
-            boards.push(new Board(board.name))
-        }
-        return boards; 
+        const boards = await this.boardRepository.findAll();
+        return boards;
     }
 }
