@@ -1,6 +1,5 @@
 import Board from "../domain/entity/Board";
 import BoardRepository from "../domain/repository/BoardRepository";
-import { Service } from "./Service";
 
 export default class BoardService {
 
